@@ -1,0 +1,24 @@
+.bar {
+  background-color: var(--primary);
+  color: var(--text);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  font-weight: bold;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+}
+
+.bar > div {
+  cursor: pointer;
+  flex-grow: 1;
+  padding: 0.75rem 0;
+  text-align: center;
+}
+
+svg {
+  height: 2em;
+  width: 2em;
+}

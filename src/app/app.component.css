@@ -1,0 +1,10 @@
+.app__main {
+  margin-bottom: 3.5rem;
+}
+
+.app__bar {
+  bottom: 0;
+  position: absolute;
+  right: 0;
+  width: 100%;
+}

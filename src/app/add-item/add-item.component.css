@@ -1,0 +1,39 @@
+.add-item__list {
+  margin-bottom: 7.875rem;
+}
+
+.add-item__item {
+  border-bottom: 1px solid lightgray;
+  padding: 0.5rem;
+}
+
+.add-item__input-wrapper {
+  background-color: white;
+  position: fixed;
+  bottom: 3.5rem;
+  right: 0;
+  width: 100%;
+  border-top: 1px solid lightgrey;
+  padding: 0.25rem;
+}
+
+.add-item__input-wrapper > * {
+  padding-bottom: 0.25rem;
+}
+
+.add-item__search {
+  width: 100%;
+}
+
+.add-item__input-wrapper > *:last-child {
+  padding-bottom: 0;
+}
+
+.add-item__amount {
+  width: 10rem;
+  margin: auto;
+}
+
+.add-item__amount-input {
+
+}
