@@ -3,7 +3,22 @@
 }
 
 .add-item__item {
+  display: flex;
   border-bottom: 1px solid lightgray;
+}
+
+.add-item__item--selected {
+  background-color: var(--primary);
+  color: white;
+}
+
+.add-item__item-name {
+  flex-grow: 2;
+  padding: 0.5rem;
+}
+
+.add-item__edit-item {
+  color: lightgray;
   padding: 0.5rem;
 }
 
@@ -14,7 +29,7 @@
   right: 0;
   width: 100%;
   border-top: 1px solid lightgrey;
-  padding: 0.25rem;
+  padding: 0.5rem;
 }
 
 .add-item__input-wrapper > * {

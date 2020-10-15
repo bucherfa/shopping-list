@@ -40,6 +40,16 @@ export class DataService {
     this.setStorage();
   }
 
+  public updateItem(item: Item): void {
+    this.data.items[item.id] = item;
+    this.setStorage();
+  }
+
+  public deleteItem(itemId: string): void {
+    delete this.data.items[itemId];
+    this.setStorage();
+  }
+
   private uuidv4(): string {
     return (`${1e7}-${1e3}-${4e3}-${8e3}-${1e11}`).replace(/[018]/g, (c: any) =>
       // tslint:disable-next-line:no-bitwise
