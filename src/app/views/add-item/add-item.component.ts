@@ -1,8 +1,8 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
-import { Item } from '../models/item';
-import {DataService} from '../data.service';
+import { Item } from '../../models/item';
+import {DataService} from '../../services/data.service';
 
 @Component({
   selector: 'app-add-item',

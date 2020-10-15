@@ -6,17 +6,19 @@ import { AppComponent } from './app.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { BarComponent } from './bar/bar.component';
-import { AddItemComponent } from './add-item/add-item.component';
+import { BarComponent } from './components/bar/bar.component';
+import { AddItemComponent } from './views/add-item/add-item.component';
 import { FormsModule } from '@angular/forms';
-import { OverviewListComponent } from './overview-list/overview-list.component';
+import { OverviewListComponent } from './views/overview-list/overview-list.component';
+import { PreferencesComponent } from './views/preferences/preferences.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BarComponent,
     AddItemComponent,
-    OverviewListComponent
+    OverviewListComponent,
+    PreferencesComponent
   ],
   imports: [
     BrowserModule,

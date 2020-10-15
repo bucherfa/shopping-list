@@ -1,9 +1,9 @@
 import { Inject, Injectable } from '@angular/core';
 import { LOCAL_STORAGE, StorageService } from 'ngx-webstorage-service';
 
-import { Storage } from './models/storage';
-import { Item } from './models/item';
-import {ListItem} from './models/listItem';
+import { Storage } from '../models/storage';
+import { Item } from '../models/item';
+import { ListItem } from '../models/listItem';
 
 const STORAGE_KEY = 'shopping-list_data';
 
@@ -74,5 +74,10 @@ export class DataService {
 
   getList(): ListItem[] {
     return Object.values(this.data.list);
+  }
+
+  reset(): void {
+    this.data = { version: '0.0.1', stores: {}, items: {}, list: {} };
+    this.setStorage();
   }
 }
