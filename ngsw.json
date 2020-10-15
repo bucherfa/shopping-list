@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1602745632673,
+  "timestamp": 1602751804210,
   "index": "/shopping-list/index.html",
   "assetGroups": [
     {
@@ -13,7 +13,7 @@
       "urls": [
         "/shopping-list/favicon.ico",
         "/shopping-list/index.html",
-        "/shopping-list/main.96131dde85318a8f36d6.js",
+        "/shopping-list/main.cb50f4cce88fcab01686.js",
         "/shopping-list/manifest.webmanifest",
         "/shopping-list/polyfills.6282a28eb8950eb48467.js",
         "/shopping-list/runtime.acf0dec4155e77772545.js",
@@ -52,8 +52,8 @@
     "/shopping-list/assets/icons/icon-72x72.png": "c457e56089a36952cd67156f9996bc4ce54a5ed9",
     "/shopping-list/assets/icons/icon-96x96.png": "3914125a4b445bf111c5627875fc190f560daa41",
     "/shopping-list/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
-    "/shopping-list/index.html": "0f1814aa57e5ef574d3e0dfcf317004f73f6a253",
-    "/shopping-list/main.96131dde85318a8f36d6.js": "b7fa4695b0bc4ae8c692421950323c5c1fe15ab5",
+    "/shopping-list/index.html": "2a6d1f8b84756d09cd498e7b4a58a478f3b8a76a",
+    "/shopping-list/main.cb50f4cce88fcab01686.js": "ff9acfcf4e06988abc74ff1ee1f409f72d13a8a8",
     "/shopping-list/manifest.webmanifest": "3d9211f1fc003290547596d9c15897de16a32e0b",
     "/shopping-list/polyfills.6282a28eb8950eb48467.js": "dbc502f030c7bb83c7caa1feee7aff990831f7d9",
     "/shopping-list/runtime.acf0dec4155e77772545.js": "a9aafcf49f49145093fc831efd9b8e2f6c71bb9c",
