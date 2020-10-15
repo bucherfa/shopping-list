@@ -1,6 +1,6 @@
 <div>
   <div class="add-item__list">
-    <div *ngFor="let item of filtered()" class="add-item__item" [class.add-item__item--selected]="item.name.toLocaleLowerCase() === searchValue.toLocaleLowerCase()">
+    <div *ngFor="let item of filtered()" class="add-item__item" [class.add-item__item--selected]="item.name.toLocaleLowerCase() === cleanInput().toLocaleLowerCase()">
       <div class="add-item__item-name" (click)="handleItemClick(item)">{{ item.name }}</div>
       <div class="add-item__edit-item" (click)="handleItemEditClick(content, item)">
         |

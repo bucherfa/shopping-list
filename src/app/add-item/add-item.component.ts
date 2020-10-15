@@ -1,5 +1,5 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
-import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { Item } from '../models/item';
 import {DataService} from '../data.service';
@@ -30,11 +30,19 @@ export class AddItemComponent implements OnInit {
   }
 
   filtered(): Item[] {
-    return this.getItems().filter(value => value.name.toLocaleLowerCase().includes(this.searchValue.toLocaleLowerCase()));
+    return this.getItems().filter(value => value.name.toLocaleLowerCase().includes(this.cleanInput().toLocaleLowerCase()));
+  }
+
+  cleanInput(): string {
+    return this.searchValue.replace(/\s+/g, ' ').trim();
   }
 
   addItem(): void {
-    this.searchValue = this.searchValue.trim();
+    this.searchValue = this.cleanInput();
+    const searchedElement = this.filtered().find((item: Item) => item.name === this.searchValue)[0];
+    if (searchedElement !== undefined) {
+      // TODO this.data
+    }
     if (this.searchValue !== '') {
       this.dataService.addItem(this.searchValue);
     }
