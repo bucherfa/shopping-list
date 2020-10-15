@@ -13,14 +13,10 @@ export class AddItemComponent implements OnInit {
 
   constructor(private dataService: DataService, private modalService: NgbModal) { }
 
-  items: Item[];
   nextAmount = 1;
-
   searchValue = '';
-
-  @ViewChild('searchElement') searchElement: ElementRef;
-
   itemToEdit: Item;
+  @ViewChild('searchElement') searchElement: ElementRef;
 
   modifyNextAmount(x: number): void {
     this.nextAmount =  this.nextAmount + x;
@@ -39,14 +35,16 @@ export class AddItemComponent implements OnInit {
 
   addItem(): void {
     this.searchValue = this.cleanInput();
-    const searchedElement = this.filtered().find((item: Item) => item.name === this.searchValue)[0];
+    const searchedElement = this.filtered().find((item: Item) => item.name === this.searchValue);
     if (searchedElement !== undefined) {
-      // TODO this.data
-    }
-    if (this.searchValue !== '') {
-      this.dataService.addItem(this.searchValue);
+      this.dataService.addItemToShoppingList(searchedElement, this.nextAmount);
+    } else {
+      if (this.searchValue !== '') {
+        this.dataService.addItem(this.searchValue, this.nextAmount);
+      }
     }
     this.searchValue = '';
+    this.nextAmount = 1;
   }
 
   clearSearch(): void {

@@ -3,6 +3,7 @@ import { LOCAL_STORAGE, StorageService } from 'ngx-webstorage-service';
 
 import { Storage } from './models/storage';
 import { Item } from './models/item';
+import {ListItem} from './models/listItem';
 
 const STORAGE_KEY = 'shopping-list_data';
 
@@ -18,7 +19,7 @@ export class DataService {
   }
 
   public getStorage(): Storage {
-    this.data = this.storage.get(STORAGE_KEY) || { version: '0.0.1', stores: {}, items: {}, lists: {} };
+    this.data = this.storage.get(STORAGE_KEY) || { version: '0.0.1', stores: {}, items: {}, list: {} };
     return this.data;
   }
 
@@ -30,13 +31,15 @@ export class DataService {
     return Object.values(this.data.items);
   }
 
-  public addItem(name: string): void {
+  public addItem(name: string, amount: number): void {
     const item = {
       id: this.uuidv4(),
       name,
-      count: 0
+      count: 0,
+      disabled: false
     };
     this.data.items[item.id] = item;
+    this.addItemToShoppingList(item, amount);
     this.setStorage();
   }
 
@@ -46,7 +49,7 @@ export class DataService {
   }
 
   public deleteItem(itemId: string): void {
-    delete this.data.items[itemId];
+    this.data.items[itemId].disabled = true;
     this.setStorage();
   }
 
@@ -57,4 +60,19 @@ export class DataService {
     );
   }
 
+  public addItemToShoppingList(item: Item, amount: number): void {
+    if (this.data.list[item.id]) {
+      this.data.list[item.id].amount += amount;
+    } else {
+      this.data.list[item.id] = { itemId: item.id, amount };
+    }
+  }
+
+  getItem(itemId: string): Item {
+    return this.data.items[itemId];
+  }
+
+  getList(): ListItem[] {
+    return Object.values(this.data.list);
+  }
 }

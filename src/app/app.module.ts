@@ -9,12 +9,14 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BarComponent } from './bar/bar.component';
 import { AddItemComponent } from './add-item/add-item.component';
 import { FormsModule } from '@angular/forms';
+import { OverviewListComponent } from './overview-list/overview-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BarComponent,
-    AddItemComponent
+    AddItemComponent,
+    OverviewListComponent
   ],
   imports: [
     BrowserModule,

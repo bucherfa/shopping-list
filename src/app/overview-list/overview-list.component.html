@@ -1,0 +1,6 @@
+<p>overview-list works!</p>
+<div>
+  <div *ngFor="let listItem of getList()">
+    {{ getItem(listItem.itemId).name }} | {{ listItem.amount }}
+  </div>
+</div>
