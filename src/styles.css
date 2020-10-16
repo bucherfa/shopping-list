@@ -5,3 +5,7 @@
   --highlight: #81B29A;
   --text: #F4F1DE;
 }
+
+body {
+  font-size: 1.25em;
+}

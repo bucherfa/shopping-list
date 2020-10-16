@@ -4,6 +4,7 @@ import { LOCAL_STORAGE, StorageService } from 'ngx-webstorage-service';
 import { Storage } from '../models/storage';
 import { Item } from '../models/item';
 import { ListItem } from '../models/listItem';
+import {Store} from '../models/store';
 
 const STORAGE_KEY = 'shopping-list_data';
 
@@ -18,8 +19,21 @@ export class DataService {
     this.getStorage();
   }
 
+  static defaultData(): Storage {
+    return JSON.parse(JSON.stringify({ version: '0.0.1', stores: {
+        'bdc88b7f-da10-4295-b56b-2a109b265352': {
+          id: 'bdc88b7f-da10-4295-b56b-2a109b265352',
+          name: 'Store 1'
+        },
+        'bdc88b7f-da10-4295-b56b-2a109b265353': {
+          id: 'bdc88b7f-da10-4295-b56b-2a109b265353',
+          name: 'Store 2'
+        }
+      }, items: {}, list: {} }));
+  }
+
   public getStorage(): Storage {
-    this.data = this.storage.get(STORAGE_KEY) || { version: '0.0.1', stores: {}, items: {}, list: {} };
+    this.data = this.storage.get(STORAGE_KEY) || DataService.defaultData();
     return this.data;
   }
 
@@ -28,7 +42,7 @@ export class DataService {
   }
 
   public getItems(): Item[] {
-    return Object.values(this.data.items);
+    return Object.values(this.data.items).filter((item: Item) => !item.disabled);
   }
 
   public addItem(name: string, amount: number): void {
@@ -36,7 +50,8 @@ export class DataService {
       id: this.uuidv4(),
       name,
       count: 0,
-      disabled: false
+      disabled: false,
+      stores: []
     };
     this.data.items[item.id] = item;
     this.addItemToShoppingList(item, amount);
@@ -76,8 +91,12 @@ export class DataService {
     return Object.values(this.data.list);
   }
 
+  getStores(): Store[] {
+    return Object.values(this.data.stores);
+  }
+
   reset(): void {
-    this.data = { version: '0.0.1', stores: {}, items: {}, list: {} };
+    this.data = DataService.defaultData();
     this.setStorage();
   }
 }

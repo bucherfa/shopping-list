@@ -3,4 +3,5 @@ export interface Item {
   name: string;
   count: number;
   disabled: boolean;
+  stores: string[];
 }

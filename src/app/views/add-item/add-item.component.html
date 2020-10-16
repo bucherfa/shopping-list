@@ -11,14 +11,14 @@
     </div>
   </div>
   <div class="add-item__input-wrapper">
-    <div class="input-group  add-item__search">
+    <div class="input-group add-item__search input-group-lg">
       <input type="text" class="form-control" placeholder="Search item..." [(ngModel)]="searchValue" #searchElement>
       <div class="input-group-append">
         <button type="button" class="btn btn-outline-primary" (click)="clearSearch()">x</button>
       </div>
     </div>
     <div class="add-item__amount">
-      <div class="input-group">
+      <div class="input-group input-group-lg">
         <div class="input-group-prepend">
           <button type="button" class="btn btn-primary" (click)="modifyNextAmount(-1)">-</button>
         </div>
@@ -29,7 +29,7 @@
       </div>
     </div>
     <div>
-      <button type="button" class="btn btn-primary" (click)="addItem()">Add to shopping list</button>
+      <button type="button" class="btn btn-primary btn-lg" (click)="addItem()">Add to shopping list</button>
     </div>
   </div>
 </div>
