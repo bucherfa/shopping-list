@@ -14,7 +14,7 @@
     <div class="input-group add-item__search input-group-lg">
       <input type="text" class="form-control" placeholder="Search item..." [(ngModel)]="searchValue" #searchElement>
       <div class="input-group-append">
-        <button type="button" class="btn btn-outline-primary" (click)="clearSearch()">x</button>
+        <button type="button" class="btn btn-outline-primary" (click)="clearSearch()">&times;</button>
       </div>
     </div>
     <div class="add-item__amount">
@@ -48,13 +48,11 @@
     </div>
     <div class="form-group">
       <span>Stores</span>
-      <div class="custom-control custom-switch">
-        <input type="checkbox" class="custom-control-input" id="store1">
-        <label class="custom-control-label" for="store1">Aldi</label>
-      </div>
-      <div class="custom-control custom-switch">
-        <input type="checkbox" class="custom-control-input" id="store2">
-        <label class="custom-control-label" for="store2">Edeka</label>
+      <div>
+        <div *ngFor="let store of getStores()" class="custom-control custom-switch add-item__switch">
+          <input type="checkbox" class="custom-control-input" [id]="store.id" (click)="handleStoreClick(store.id)" [checked]="itemToEdit.stores.includes(store.id)">
+          <label class="custom-control-label" [for]="store.id">{{ store.name }}</label>
+        </div>
       </div>
     </div>
   </div>

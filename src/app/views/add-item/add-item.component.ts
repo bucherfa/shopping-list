@@ -3,6 +3,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { Item } from '../../models/item';
 import {DataService} from '../../services/data.service';
+import {Store} from '../../models/store';
 
 @Component({
   selector: 'app-add-item',
@@ -17,6 +18,7 @@ export class AddItemComponent implements OnInit {
   searchValue = '';
   itemToEdit: Item;
   @ViewChild('searchElement') searchElement: ElementRef;
+  selectedStores = {};
 
   modifyNextAmount(x: number): void {
     this.nextAmount =  this.nextAmount + x;
@@ -63,7 +65,18 @@ export class AddItemComponent implements OnInit {
 
   handleItemEditClick(content: any, item: Item): void {
     this.itemToEdit = JSON.parse(JSON.stringify(item));
+    for (const storeKey of Object.keys(this.selectedStores)) {
+      this.selectedStores[storeKey] = this.itemToEdit.stores.includes(storeKey);
+    }
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title', centered: true });
+  }
+
+  handleStoreClick(storeId: string): void {
+    if (this.itemToEdit.stores.includes(storeId)) {
+      this.itemToEdit.stores = this.itemToEdit.stores.filter((sId) => sId !== storeId);
+    } else {
+      this.itemToEdit.stores.push(storeId);
+    }
   }
 
   saveEdit(modal: any): void {
@@ -76,7 +89,18 @@ export class AddItemComponent implements OnInit {
     this.dataService.deleteItem(this.itemToEdit.id);
   }
 
+  getStoreKeys(): string[] {
+    return this.dataService.getStoreKeys();
+  }
+
+  getStores(): Store[] {
+    return this.dataService.getStores();
+  }
+
   ngOnInit(): void {
+    for (const storeKey of this.getStoreKeys()) {
+      this.selectedStores[storeKey] = true;
+    }
   }
 
 }

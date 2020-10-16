@@ -14,12 +14,12 @@
 
 .add-item__item-name {
   flex-grow: 2;
-  padding: 0.5rem;
+  padding: 0.75rem;
 }
 
 .add-item__edit-item {
   color: lightgray;
-  padding: 0.5rem;
+  padding: 0.75rem;
 }
 
 .add-item__input-wrapper {

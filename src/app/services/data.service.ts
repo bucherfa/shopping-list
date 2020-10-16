@@ -99,4 +99,12 @@ export class DataService {
     this.data = DataService.defaultData();
     this.setStorage();
   }
+
+  getStore(storeId: string): Store {
+    return this.getStores()[storeId];
+  }
+
+  getStoreKeys(): string[] {
+    return Object.keys(this.getStores());
+  }
 }
